@@ -2,13 +2,10 @@
 import React, { useEffect, useState } from "react";
 import { getAllVoyages } from "../Services/voyages";
 import { useRouter } from "next/navigation";
-import { TailSpin } from "react-loader-spinner";
-
 
 const Voyages = () => {
   const [voyagesList, setVoyagesList] = useState([]);
   const [isReloadNeeded, setIsReloadNeeded] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const { push } = useRouter();
 
@@ -36,7 +33,7 @@ const Voyages = () => {
       </header>
       <img
         src="https://img.freepik.com/photos-gratuite/concept-voyage-points-repere_23-2149153256.jpg?w=1380&t=st=1715868920~exp=1715869520~hmac=f8113b03322c5eed9555f5d7f92d727c4117e8830147a5cb05673d4d46b36cb8"
-        alt=""
+        alt="Voyages"
         className="w-full h-96 object-cover"
       />
       <h1 className="my-6 py-16 text-3xl font-semibold text-gray-800">
@@ -44,79 +41,71 @@ const Voyages = () => {
       </h1>
       <div className="mt-6 space-y-12 lg:grid-cols-3 lg:gap-x-6 lg:space-y-0"></div>
       <div className="flex flex-wrap w-11/12 mx-auto gap-4">
-        {isLoading ? (
-          <TailSpin
-            color="#06b6d4"
-            height={80}
-            width={80}
-          />
-        ) : (
-          voyagesList.map((voyage: any) => (
-            <div
-              key={voyage.id}
-              className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"
-            >
-              <img
-                src={voyage.image}
-                alt={voyage.destination}
-                className="w-full h-48 object-cover rounded-t-lg cursor-pointer"
+        {voyagesList.map((voyage: any) => (
+          <div
+            key={voyage.id}
+            className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"
+          >
+            <img
+              src={voyage.image}
+              alt={voyage.destination}
+              className="w-full h-48 object-cover rounded-t-lg cursor-pointer"
+              onClick={() => {
+                push(`/voyages/view/${voyage.id}`);
+              }}
+            />
+            <div className="p-4">
+              <h5
+                className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white cursor-pointer"
                 onClick={() => {
                   push(`/voyages/view/${voyage.id}`);
                 }}
-              />
-              <div className="p-4">
-                <h5
-                  className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white cursor-pointer"
-                  onClick={() => {
-                    push(`/voyages/view/${voyage.id}`);
-                  }}
-                >
-                  {voyage.destination} - {voyage.pays[0].nom}
-                </h5>
-                <div className="flex items-center justify-between">
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Départ :{" "}
-                    {new Date(voyage.dateDepart).toLocaleDateString("FR")}
-                  </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Retour :{" "}
-                    {new Date(voyage.dateRetour).toLocaleDateString("FR")}
-                  </p>
-                </div>
-                <p className="mb-3 font-medium text-gray-900 dark:text-white">
-                  A partir de {voyage.prix}
+              >
+                {voyage.destination} - {voyage.pays[0].nom}
+              </h5>
+              <div className="flex items-center justify-between">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  Départ :{" "}
+                  {new Date(voyage.dateDepart).toLocaleDateString("FR")}
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {voyage.description.substring(0, 100) + "..."}
+                  Retour :{" "}
+                  {new Date(voyage.dateRetour).toLocaleDateString("FR")}
                 </p>
-                <a
-                  href=""
-                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  onClick={() => {
-                    push(`/voyages/view/${voyage.id}`);
-                  }}
-                >
-                  Lire la suite
-                  <svg
-                    className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
-                </a>
               </div>
+              <p className="mb-3 font-medium text-gray-900 dark:text-white">
+                A partir de {voyage.prix}
+              </p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                {voyage.description.substring(0, 100) + "..."}
+              </p>
+              <a
+                href=""
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                onClick={() => {
+                  push(`/voyages/view/${voyage.id}`);
+                }}
+              >
+                Lire la suite
+                <svg
+                  className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  />
+                </svg>
+              </a>
             </div>
-          ))
-        )}
+          </div>
+        ))}
       </div>
       <footer className="w-full mt-12 pb-12 lg:pb-24 bg-dark-100 dark:bg-gray-800">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
