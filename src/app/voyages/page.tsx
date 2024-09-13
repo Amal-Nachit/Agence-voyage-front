@@ -42,11 +42,10 @@ const Voyages = () => {
       <h1 className="my-6 py-16 text-3xl font-semibold text-gray-800">
         Tout nos voyages
       </h1>
-    <div className="mt-6 space-y-12 lg:grid-cols-3 lg:gap-x-6 lg:space-y-0"></div>
+      <div className="mt-6 space-y-12 lg:grid-cols-3 lg:gap-x-6 lg:space-y-0"></div>
       <div className="flex flex-wrap w-11/12 mx-auto gap-4">
         {isLoading ? (
           <TailSpin
-            className="mx-auto"
             color="#06b6d4"
             height={80}
             width={80}
@@ -123,10 +122,10 @@ const Voyages = () => {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mt-6 flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-y-0">
             <p className="text-gray-600 dark:text-gray-400">
-              Copyright © 2020. All right reserved. 
+              Copyright © 2020. All right reserved.
             </p>
             <p className="text-gray-600 dark:text-gray-400">
-               Designed by{" "}
+              Designed by{" "}
               <a
                 href="https://github.com/amal-nachit"
                 className="text-blue-600 hover:underline"
