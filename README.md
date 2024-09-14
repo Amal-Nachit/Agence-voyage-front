@@ -30,11 +30,10 @@ Ce projet est l'interface publique du site d'une agence de voyage, développée 
 **Cloner le dépôt :**
    ```bash
    git clone https://github.com/Amal-Nachit/agence-voyage-front.git
-   cd agence-voyage-front
-```
+   cd agence-voyage-front```
 
 **Installer les dépendances :**
 
     ```bash
-  npm install
-  ```
+  npm install```
+
