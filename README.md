@@ -33,7 +33,7 @@ Ce projet est l'interface publique du site d'une agence de voyage, développée 
    cd agence-voyage-front
 ```
 
-    Installer les dépendances :
+**Installer les dépendances :**
 
     ```bash
   npm install
