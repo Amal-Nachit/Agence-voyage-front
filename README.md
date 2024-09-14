@@ -36,5 +36,5 @@ Ce projet est l'interface publique du site d'une agence de voyage, développée 
 **Installer les dépendances :**
 
     ```bash
-  npm install
+     npm install
   ```
