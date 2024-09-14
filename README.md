@@ -37,4 +37,12 @@ Ce projet est l'interface publique du site d'une agence de voyage, développée 
 
     ```bash
      npm install
-  ```
+     ```
+**Lancer le serveur local :**
+   ```bash
+   npm run dev
+   ```
+**Créer le build pour la production :**
+   ```bash
+   npm run build
+   ```
